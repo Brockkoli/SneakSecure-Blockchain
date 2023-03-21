@@ -1,3 +1,7 @@
+f = open('sneaksecure.txt', 'r')
+sneaksecureLogo = f.read()
+print(sneaksecureLogo)
+f.close()
 print('\nWelcome to 2205 Applied Crypto!')
 while(1):
 	print('\nThe following options are available to the user: ')
