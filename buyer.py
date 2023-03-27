@@ -7,6 +7,19 @@ import base64
 import mysql.connector
 import getpass
 import json
+import os
+from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+from cryptography.hazmat.primitives import hashes
+from cryptography.hazmat.backends import default_backend
+from cryptography.hazmat.primitives import serialization
+from cryptography.hazmat.primitives.serialization import (
+    load_pem_private_key,
+    load_pem_public_key,
+    Encoding,
+    PrivateFormat,
+    PublicFormat,
+)
 import colorama
 import pyfiglet
 
@@ -29,6 +42,22 @@ class Transaction:
     def __str__(self):
         return f"Transaction(address={self.address}, shoe_model={self.shoe_model}, price={self.price}, utxo={self.utxo})"
 
+
+# # Get the database credentials from environment variables
+# DB_HOST = os.environ.get('DB_HOST')
+# DB_PORT = os.environ.get('DB_PORT')
+# DB_USER = os.environ.get('DB_USER')
+# DB_PASSWORD = os.environ.get('DB_PASSWORD')
+# DB_NAME = os.environ.get('DB_NAME')
+
+# # Open a connection to the database
+# mydb = mysql.connector.connect(
+#   host=DB_HOST,
+#   port=DB_PORT,
+#   user=DB_USER,
+#   password=DB_PASSWORD,
+#   database=DB_NAME
+# )
 
 # Open a connection to the database
 mydb = mysql.connector.connect(
@@ -137,8 +166,17 @@ if status == 1:
             f.write(sk.to_pem())
 
         # Save the public key to a file
-        with open("buyer_public_key.pem", "wb") as f:
+        pub_key_path = "buyerPriv/buyer_public_key.pem"
+        with open(pub_key_path, "wb") as f:
             f.write(vk.to_pem())
+
+        # Read the public key pen file
+        with open(pub_key_path, "rb") as f:
+            pem_bytes = f.read()
+
+        # Send the .pem bytes over the socket
+        s.sendall(pem_bytes)
+        print(colorama.Fore.GREEN + "\nPublic key propogated throughout network" + colorama.Style.RESET_ALL)
 
         # Sign the transaction data with the private key
         signature = sk.sign(transaction_details_json.encode())
@@ -146,6 +184,40 @@ if status == 1:
         # Encode the signature in base64
         encoded_signature = base64.b64encode(signature)
         print(colorama.Fore.GREEN + "Transaction signed." + colorama.Style.RESET_ALL)
+
+        # Encrypt the private key using PBES2
+        # passwordkey = input(colorama.Fore.YELLOW + "\nType in your password for the key: " + colorama.Style.RESET_ALL).encode('utf-8')
+        passwordkey = getpass.getpass(prompt=colorama.Fore.YELLOW + "\nType in your password for the key: " + colorama.Style.RESET_ALL).encode('utf-8')
+        salt = os.urandom(16)
+        iterations = 100000
+        backend = default_backend()
+ 
+        # Derive the encryption key from the password using PBKDF2
+        kdf = PBKDF2HMAC(
+            algorithm=hashes.SHA256(),
+            length=32,
+            salt=salt,
+            iterations=iterations,
+            backend=backend,
+        )
+        encryption_key = kdf.derive(passwordkey)
+
+        # Load the private key from the file
+        with open(private_key_path, "rb") as f:
+            private_key_data = f.read()
+        private_key = load_pem_private_key(private_key_data, password=None, backend=backend)
+
+        # Serialize the private key to a PEM-encoded format
+        serialized_private_key = private_key.private_bytes(
+            encoding=Encoding.PEM,
+            format=PrivateFormat.PKCS8,
+            encryption_algorithm=serialization.BestAvailableEncryption(encryption_key),
+        )
+
+        # Save the encrypted private key to a file
+        encrypted_private_key_path = "buyerPriv/buyer_private_key.pem"
+        with open(encrypted_private_key_path, "wb") as f:
+            f.write(serialized_private_key)
 
         # Combine the transaction details and signature into a single dictionary
         signed_transaction = {

@@ -6,6 +6,7 @@ import base64
 import mysql.connector
 import json
 import colorama
+import os
 import pyfiglet
 
 title = pyfiglet.figlet_format("Manufacturer")
@@ -25,6 +26,22 @@ class Transaction_to_buyer:
     def __str__(self):
         return f"Transaction(shoe_model={self.shoe_model}, price={self.price})"
 
+
+# # Get the database credentials from environment variables
+# DB_HOST = os.environ.get('DB_HOST')
+# DB_PORT = os.environ.get('DB_PORT')
+# DB_USER = os.environ.get('DB_USER')
+# DB_PASSWORD = os.environ.get('DB_PASSWORD')
+# DB_NAME = os.environ.get('DB_NAME')
+
+# # Open a connection to the database
+# mydb = mysql.connector.connect(
+#   host=DB_HOST,
+#   port=DB_PORT,
+#   user=DB_USER,
+#   password=DB_PASSWORD,
+#   database=DB_NAME
+# )
 
 # Open a connection to the database
 mydb = mysql.connector.connect(
@@ -124,11 +141,18 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             else:
                 break
 
+            # Accept a connection and receive the .pem bytes
+            pem_bytes = conn.recv(1024)
+
+            # Save the .pem bytes to a file
+            with open("received_pubkey.pem", "wb") as f:
+                f.write(pem_bytes)
+
             # load the signed transaction from the socket
             signed_transaction_json = conn.recv(1024)
 
             # Load the buyer's public key from the file
-            with open('buyer_public_key.pem', 'rb') as f:
+            with open('received_pubkey.pem', 'rb') as f:
                 vk_pem = f.read()
 
             # Create a new verifying key object from the public key
