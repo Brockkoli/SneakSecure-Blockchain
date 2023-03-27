@@ -63,5 +63,6 @@ FraudFence can be installed locally by following these steps:
 ![sql](https://user-images.githubusercontent.com/59412437/228037381-f92f88f1-b12d-442e-861c-324cf2ceba4a.png) 
 
 - View blockchain in csv file:
-![csv](https://user-images.githubusercontent.com/59412437/228037559-d59fbab6-039b-4787-a737-2357e762019a.png)
+![csv](https://user-images.githubusercontent.com/59412437/228042530-592a57b4-a955-4a94-bb85-3659e9affafd.png)
+
 
