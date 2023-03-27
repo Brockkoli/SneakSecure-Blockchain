@@ -7,7 +7,7 @@ SneakSecure is a proof-of-concept blockchain project that aims to provide secure
 > **Note:** This is an assignment project for  **ICT 2205 Applied Cryptography** 
 
 > Singapore Institute of Technology Bachelor of Engineering with Honours in Information and Communications Technology majoring in Information Security
-##  Installation
+##  Usage
 
 FraudFence can be installed locally by following these steps:
 1.  Clone the repository to your local machine.
@@ -17,10 +17,10 @@ FraudFence can be installed locally by following these steps:
    ``` cd SneakSecure-Blockchain```
 
    ```pip install -r requirements.txt```
-
-3.  Run `python manufacturer.py` to start the listening for transaction requests.
-4.  Run `python buyer.py` to start transaction.
-5.  Run `python miner.py` to mine block
+3.  Import sql database.
+4.  Run `python manufacturer.py` to start the listening for transaction requests.
+5.  Run `python buyer.py` to start transaction.
+6.  Run `python miner.py` to mine block
 
 ## Features
 
