@@ -164,7 +164,7 @@ if status == 1:
         s.sendall(signed_transaction_json.encode())
         print(colorama.Fore.YELLOW + "Signed transaction propogated and awaiting verification ..." + colorama.Style.RESET_ALL)
 
-        # # Close the connection
+        # Close the connection
         # s.close()
         
 

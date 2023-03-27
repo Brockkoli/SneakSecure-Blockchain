@@ -153,8 +153,6 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             else:
                 print(colorama.Fore.RED + "\n[!] Transaction discarded." + colorama.Style.RESET_ALL)
 
-            
-
-            # # Close the connection
+            # Close the connection
             # conn.close()
             # s.close()
