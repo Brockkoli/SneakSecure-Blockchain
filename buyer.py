@@ -43,30 +43,22 @@ class Transaction:
         return f"Transaction(address={self.address}, shoe_model={self.shoe_model}, price={self.price}, utxo={self.utxo})"
 
 
-# # Get the database credentials from environment variables
-# DB_HOST = os.environ.get('DB_HOST')
-# DB_PORT = os.environ.get('DB_PORT')
-# DB_USER = os.environ.get('DB_USER')
-# DB_PASSWORD = os.environ.get('DB_PASSWORD')
-# DB_NAME = os.environ.get('DB_NAME')
-
-# # Open a connection to the database
-# mydb = mysql.connector.connect(
-#   host=DB_HOST,
-#   port=DB_PORT,
-#   user=DB_USER,
-#   password=DB_PASSWORD,
-#   database=DB_NAME
-# )
+# Get the database credentials from environment variables
+DB_HOST = os.environ.get('DB_HOST')
+DB_PORT = os.environ.get('DB_PORT')
+DB_USER = os.environ.get('DB_USER')
+DB_PASSWORD = os.environ.get('DB_PASSWORD')
+DB_NAME = os.environ.get('DB_NAME')
 
 # Open a connection to the database
 mydb = mysql.connector.connect(
-  host="localhost",
-  port=3306,
-  user="root",
-  password="toor",
-  database="sneaksecure"
+  host=DB_HOST,
+  port=DB_PORT,
+  user=DB_USER,
+  password=DB_PASSWORD,
+  database=DB_NAME
 )
+
 
 # create cursor object to execute queries
 mycursor = mydb.cursor()
@@ -237,7 +229,7 @@ if status == 1:
         print(colorama.Fore.YELLOW + "Signed transaction propogated and awaiting verification ..." + colorama.Style.RESET_ALL)
 
         # Close the connection
-        # s.close()
+        s.close()
         
 
 

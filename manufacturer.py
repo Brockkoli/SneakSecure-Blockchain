@@ -27,29 +27,20 @@ class Transaction_to_buyer:
         return f"Transaction(shoe_model={self.shoe_model}, price={self.price})"
 
 
-# # Get the database credentials from environment variables
-# DB_HOST = os.environ.get('DB_HOST')
-# DB_PORT = os.environ.get('DB_PORT')
-# DB_USER = os.environ.get('DB_USER')
-# DB_PASSWORD = os.environ.get('DB_PASSWORD')
-# DB_NAME = os.environ.get('DB_NAME')
-
-# # Open a connection to the database
-# mydb = mysql.connector.connect(
-#   host=DB_HOST,
-#   port=DB_PORT,
-#   user=DB_USER,
-#   password=DB_PASSWORD,
-#   database=DB_NAME
-# )
+# Get the database credentials from environment variables
+DB_HOST = os.environ.get('DB_HOST')
+DB_PORT = os.environ.get('DB_PORT')
+DB_USER = os.environ.get('DB_USER')
+DB_PASSWORD = os.environ.get('DB_PASSWORD')
+DB_NAME = os.environ.get('DB_NAME')
 
 # Open a connection to the database
 mydb = mysql.connector.connect(
-  host="localhost",
-  port=3306,
-  user="root",
-  password="toor",
-  database="sneaksecure"
+  host=DB_HOST,
+  port=DB_PORT,
+  user=DB_USER,
+  password=DB_PASSWORD,
+  database=DB_NAME
 )
 
 # Set up AES encryption key and initialization vector (IV)
@@ -178,5 +169,5 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 print(colorama.Fore.RED + "\n[!] Transaction discarded." + colorama.Style.RESET_ALL)
 
             # Close the connection
-            # conn.close()
-            # s.close()
+            conn.close()
+            s.close()
