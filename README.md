@@ -37,6 +37,7 @@ FraudFence can be installed locally by following these steps:
 ![socket_com](https://user-images.githubusercontent.com/59412437/228035697-b38e257a-2faa-42c3-bce1-ec71fdbd4783.png)
 
 - Simplified flowchart:
+
 ![flowchart](https://user-images.githubusercontent.com/59412437/228035946-65630182-d1ee-4684-ad82-f4e7d28d1cbc.png)
 
 - manufacturer.py and buyer.py:
