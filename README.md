@@ -17,6 +17,7 @@ FraudFence can be installed locally by following these steps:
    ``` cd SneakSecure-Blockchain```
 
    ```pip install -r requirements.txt```
+   
 3.  Import sql database.
 4.  Run `python manufacturer.py` to start the listening for transaction requests.
 5.  Run `python buyer.py` to start transaction.
