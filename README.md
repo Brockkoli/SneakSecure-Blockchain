@@ -43,9 +43,11 @@ FraudFence can be installed locally by following these steps:
 ![ss1](https://user-images.githubusercontent.com/59412437/228036619-4e27e326-ff8e-4855-9fba-289b84bdb27d.png)
 
 - miner.py:
+
 ![menu](https://user-images.githubusercontent.com/59412437/228036691-a0f1abcc-cef8-4eb8-81e8-4d9570db54c0.png)
 
-- Mining of block:
+- Mining of block: 
+
 ![mining of block](https://user-images.githubusercontent.com/59412437/228036752-a9fcc56e-cd01-4e14-bbd0-2023b4ffcda3.png)
 
 - View blockchain:
@@ -53,11 +55,11 @@ FraudFence can be installed locally by following these steps:
 
 - TCP packet capture of transaction in Wireshark:
 ![tcp](https://user-images.githubusercontent.com/59412437/228037071-8bb69063-5705-4b04-a50b-93bbfd6abfe4.png)
+  - All transactions must be visible to everyone in the network to ensure that the blockchain remains decentralized and secure. This transparency also helps to prevent fraud and corruption by allowing all participants to see the details of all transactions. 
+  - However, while transaction details are visible to all publicly, the buyer can remain anonymous as only their blockchain address is included in the transaction. This feature helps to ensure the privacy of the buyer while still allowing for transparency and accountability in the blockchain.
 
 - Transaction carried out and coins value updated in SQL database:
-![sql](https://user-images.githubusercontent.com/59412437/228037381-f92f88f1-b12d-442e-861c-324cf2ceba4a.png)
-  - All transactions must be visible to everyone in the network to ensure that the blockchain remains decentralized and secure. This transparency also helps to prevent fraud and corruption by allowing all participants to see the details of all transactions. 
-  - However, while transaction details are visible to all publicly, the buyer can remain anonymous as only their blockchain address is included in the transaction. This feature helps to ensure the privacy of the buyer while still allowing for transparency and accountability in the blockchain. 
+![sql](https://user-images.githubusercontent.com/59412437/228037381-f92f88f1-b12d-442e-861c-324cf2ceba4a.png) 
 
 - View blockchain in csv file:
 ![csv](https://user-images.githubusercontent.com/59412437/228037559-d59fbab6-039b-4787-a737-2357e762019a.png)
