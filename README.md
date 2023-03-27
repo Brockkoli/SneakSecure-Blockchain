@@ -30,7 +30,7 @@ FraudFence can be installed locally by following these steps:
 -   Public key distribution 
 -   Private key storage management using the Password-Based Encryption Scheme 2 (PBES2)
 -   Consensus Algorithm - Proof of Work (PoW)
-  - based on difficulty level  
+  - based on difficulty level: no. of leading 0s  
 
 ### Figures
 - Communication process between manufacturer and buyer:
