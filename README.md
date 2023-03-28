@@ -3,13 +3,13 @@
 ![photo_2023-03-21_14-54-15](https://user-images.githubusercontent.com/59412437/228034201-d5a43bee-b9e8-4aa2-9c0f-5acb27705e6a.jpg)
 
 
-SneakSecure is a proof-of-concept blockchain project that aims to provide secure and private transactions through the use of  cryptography and decentralization.
+SneakSecure is a proof-of-concept blockchain project that aims to provide secure and private transactions through the use of cryptography and decentralization. The comunnication are conducted via socket programming, there is no real propagation of a blockchain network:).
 > **Note:** This is an assignment project for  **ICT 2205 Applied Cryptography** 
 
 > Singapore Institute of Technology Bachelor of Engineering with Honours in Information and Communications Technology majoring in Information Security
 ##  Usage
 
-FraudFence can be installed locally by following these steps:
+SneakSecure can be run locally by following these steps:
 1.  Clone the repository to your local machine.
 ``` git clone https://github.com/Brockkoli/SneakSecure-Blockchain.git```
 2.   Install the required dependencies listed in `requirements.txt`.
@@ -66,4 +66,7 @@ FraudFence can be installed locally by following these steps:
 - View blockchain in csv file:
 ![csv](https://user-images.githubusercontent.com/59412437/228042530-592a57b4-a955-4a94-bb85-3659e9affafd.png)
 
+- Verification of blockchain:
+   - removal of erroneous/illegitimate block
+![image](https://user-images.githubusercontent.com/59412437/228244369-67f8eb46-e9c1-40d7-9c79-6a325a4bab9e.png)
 
