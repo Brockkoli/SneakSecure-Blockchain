@@ -68,5 +68,6 @@ SneakSecure can be run locally by following these steps:
 
 - Verification of blockchain:
    - removal of erroneous/illegitimate block
+ 
 ![image](https://user-images.githubusercontent.com/59412437/228244369-67f8eb46-e9c1-40d7-9c79-6a325a4bab9e.png)
 
